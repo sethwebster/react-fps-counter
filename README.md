@@ -134,6 +134,7 @@ function Component() {
   </div>
 }
 ```
-![Demo of useFpsData](images/useFpsScreenshot.png)
+
+![Demo of useFpsData](https://github.com/sethwebster/fpscounter/raw/09d5437e1a45b719db96fa620cf131acf047e3fb/images/useFpsScreenshot.png)
 ### License
 [MIT](./LICENSE.txt)
