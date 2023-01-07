@@ -16,7 +16,7 @@
   "files": [
     "dist/**/*"
   ],
-  "keywords": [],
+  "keywords": ["react", "fps", "counter", "performance", "react-fps-counter"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
