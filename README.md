@@ -80,7 +80,7 @@ function App() {
     0.1: "red",  
     0.35: "orange",  
     0.5: "yellow",  
-    0.75: green" 
+    0.75: "green" 
   }
   ```
   </td>
