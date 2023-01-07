@@ -1,6 +1,6 @@
 {
   "name": "@sethwebster/react-fps-counter",
-  "version": "0.0.1",
+  "version": "0.0.2-3",
   "description": "",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/types/index.d.ts",
@@ -13,6 +13,9 @@
     "test": "mocha -- --require ts-node/register tests/*.ts tests/**/*.ts --exit",
     "test:watch": "mocha --require ts-node/register --watch --watch-files src, tests/*.ts"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

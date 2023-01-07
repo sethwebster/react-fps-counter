@@ -1,8 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const MEASURE_PERIOD = 1000;
+interface UseFpsOptions {
+  samplePeriod?: number;
+  numberOfFramesForAverage?: number;
+}
 
-export function useFps() {
+const DEFAULT_OPTIONS = {
+  samplePeriod: 1000,
+  numberOfFramesForAverage: 5,
+};
+
+export function useFps(options: UseFpsOptions) {
+  const samplePeriod = options.samplePeriod || DEFAULT_OPTIONS.samplePeriod;
+  const numberOfFramesForAverage =
+    options.numberOfFramesForAverage ||
+    DEFAULT_OPTIONS.numberOfFramesForAverage;
+
   const [fpsDisplay, setFpsDisplay] = useState({ fps: 0, avg: 0 });
   const ratings = useRef<number[]>([]);
 
@@ -21,17 +34,18 @@ export function useFps() {
     const timeElapsed = Math.floor(
       fps.current.lastTime - fps.current.startTime
     );
-    if (timeElapsed > MEASURE_PERIOD) {
+    const samplePeriodSeconds = samplePeriod / 1000;
+    if (timeElapsed > samplePeriod) {
       // Calculate the fps value
       // Update the fps cache
-      ratings.current.push(fps.current.frames / (MEASURE_PERIOD / 1000));
-      // Only keep the last 10 ratings
-      if (ratings.current.length >= 5) {
+      ratings.current.push(fps.current.frames / samplePeriodSeconds);
+      // Only keep the last N ratings
+      if (ratings.current.length > numberOfFramesForAverage) {
         ratings.current.shift();
       }
       // Update the fps display
       setFpsDisplay({
-        fps: Math.floor(fps.current.frames / (MEASURE_PERIOD / 1000)),
+        fps: Math.floor(fps.current.frames / samplePeriodSeconds),
         avg:
           ratings.current.reduce((a, b) => a + b, 0) / ratings.current.length,
       });
@@ -41,7 +55,7 @@ export function useFps() {
       fps.current.startTime = Date.now();
       fps.current.lastTime = 0;
     }
-  }, []);
+  }, [samplePeriod, numberOfFramesForAverage]);
 
   useEffect(() => {
     const i = setInterval(() => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { ColorTiers, getColor } from "./getColor";
 import { useFps } from "./useFps";
 interface FPSCounterProps {
@@ -6,14 +6,18 @@ interface FPSCounterProps {
   position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   colorTiers?: ColorTiers;
   visible?: boolean;
+  numberOfFramesForAverage?: number;
+  samplePeriod?: number;
 }
-export default function FPSCounter({
+export default memo(function FPSCounter({
   targetFrameRate = 255,
   position = "top-left",
   colorTiers,
   visible,
+  numberOfFramesForAverage,
+  samplePeriod,
 }: FPSCounterProps) {
-  const fps = useFps();
+  const fps = useFps({ numberOfFramesForAverage, samplePeriod });
   const pastFps = useRef([fps]);
   const [pastFpsWindow, setPastFpsWindow] = useState<
     { fps: Number; avg: number }[]
@@ -160,4 +164,4 @@ export default function FPSCounter({
       </div>
     </div>
   );
-}
+});
