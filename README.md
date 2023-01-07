@@ -5,7 +5,7 @@ This package provides a component to overlay of the number of FPS (frames per se
 
 You can see the current FPS, and the average FPS over a number of frames.
 
-## Usage
+## Basic Usage
 If you want to measure FPS across your entire React App, it's best to place the `FPSCounter` component at the root of your app. Otherwise, if you only want to measure a specific component or page, place the component there.
 
 ```jsx
@@ -22,13 +22,6 @@ function App() {
     </div>
   )
 }
-
- targetFrameRate?: number;
-  position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
-  colorTiers?: ColorTiers;
-  visible?: boolean;
-  numberOfFramesForAverage?: number;
-  samplePeriod?: number;
 ```
 
 ### Options
@@ -91,6 +84,37 @@ function App() {
   </td>
 </tr>
 </table>
+
+## Advanced Usage
+
+```jsx
+import { useState } from 'react';
+import FPSCounter from '@sethwebster/react-fps-counter';
+
+function App() {
+  const [fpsVisible, setFpsVisible] = useState(true)
+  return (
+    <div>
+    ...
+    <FPSCounter 
+      visible={fpsVisible} 
+      {/* sample every 100ms */}
+      samplePeriod={100} 
+      {/* average every 100 frames */}
+      numberOfFramesForAverage={100} 
+      {/* specify a more restrictive set of thresholds */}
+      colorTiers={{
+        0.3: "red",
+        0.4: "orange",
+        0.6: "yellow",
+        0.9: "green",
+      }}
+    />
+    ...
+    </div>
+  )
+}
+```
 
 ### License
 [MIT](./LICENSE.txt)
