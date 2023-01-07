@@ -116,5 +116,24 @@ function App() {
 }
 ```
 
+## Using Frame Data 
+It is possible to use the frame data yourself without the overlay, if you desire.
+
+```jsx
+...
+import { useFps } from '@sethwebster/react-fps-counter';
+...
+
+function Component() {
+  const fpsData = useFps(/* {samplePeriod: number, numberOfFramesForAver: number } */);
+
+  return <div>
+    <span>fps: {fps.fps}</span>
+    {" "} 
+    <span>avg: {fps.avg}</span>
+  </div>
+}
+```
+![Demo of useFpsData](images/useFpsScreenshot.png)
 ### License
 [MIT](./LICENSE.txt)
