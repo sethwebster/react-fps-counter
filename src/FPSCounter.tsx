@@ -133,7 +133,7 @@ export default memo(function FPSCounter({
             textShadow: "1px 1px 1px black",
           }}
         >
-          <div>
+          <div style={{ color: "rgba(255, 255, 255, 0.8)" }}>
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ flex: 1, textAlign: "right", marginRight: 4 }}>
                 fps:
