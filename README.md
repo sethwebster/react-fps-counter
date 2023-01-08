@@ -127,7 +127,7 @@ import { useFps } from '@sethwebster/react-fps-counter';
 ...
 
 function Component() {
-  const fpsData = useFps(/* {samplePeriod: number, numberOfFramesForAver: number } */);
+  const fpsData = useFps(/* {samplePeriod: number, numberOfFramesForAverage: number } */);
 
   return <div>
     <span>fps: {fps.fps}</span>
