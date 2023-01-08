@@ -5,7 +5,7 @@ This package provides a component to overlay of the number of FPS (frames per se
 
 You can see the current FPS, and the average FPS over a number of frames.
 
-[Code Sandbox](https://codesandbox.io/s/admiring-haslett-hluduf) | [Demo](https://fps-counter-example.vercel.app)
+[Code Sandbox](https://codesandbox.io/s/admiring-haslett-hluduf) | [Demo](https://hluduf.csb.app/)
 
 ## Basic Usage
 If you want to measure FPS across your entire React App, it's best to place the `FPSCounter` component at the root of your app. Otherwise, if you only want to measure a specific component or page, place the component there.

@@ -16,6 +16,13 @@ export default function App() {
         options={{ concurrentSafe: false, useDisatchQueue: false }}
       >
         <h1>FPS Counter Demo</h1>
+        <a
+          href="https://codesandbox.io/s/admiring-haslett-hluduf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Code Sandbox
+        </a>
         <SelectButtons
           amount={amount}
           setAmount={setAmount}
