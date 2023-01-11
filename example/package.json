@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@sethwebster/react-fps-counter": "^0.0.11",
+    "@sethwebster/react-fps-counter": "^0.0.12",
     "@sethwebster/simple-state": "^0.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
