@@ -2,12 +2,16 @@ export default function SelectButtons({
   amount,
   fpsVisible,
   setAmount,
-  setFpsVisible
+  setFpsVisible,
+  useAnimationFrames,
+  setUseAnimationFrames
 }: {
   amount: number;
   fpsVisible: boolean;
   setAmount: (value: number) => void;
   setFpsVisible: (visible: boolean) => void;
+  setUseAnimationFrames: (value: boolean) => void;
+  useAnimationFrames: boolean
 }) {
   return (
     <div
@@ -57,6 +61,15 @@ export default function SelectButtons({
           id="fps"
           checked={fpsVisible}
           onChange={(e) => setFpsVisible(e.currentTarget.checked)}
+        />
+      </div>
+      <div>
+        <label htmlFor="fps">Use Animation Frames</label>
+        <input
+          type="checkbox"
+          id="useAnimationFrames"
+          checked={useAnimationFrames}
+          onChange={(e) => setUseAnimationFrames(e.currentTarget.checked)}
         />
       </div>
     </div>

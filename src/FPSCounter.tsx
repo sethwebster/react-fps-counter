@@ -8,16 +8,18 @@ interface FPSCounterProps {
   visible?: boolean;
   numberOfFramesForAverage?: number;
   samplePeriod?: number;
+  useAnimationFrames?: boolean;
 }
 export default memo(function FPSCounter({
-  targetFrameRate = 255,
+  targetFrameRate = 60,
+  useAnimationFrames = true,
   position = "top-left",
   colorTiers,
   visible,
   numberOfFramesForAverage,
-  samplePeriod,
+  samplePeriod
 }: FPSCounterProps) {
-  const fps = useFps({ numberOfFramesForAverage, samplePeriod });
+  const fps = useFps({ numberOfFramesForAverage, samplePeriod, useAnimationFrames });
   const pastFps = useRef([fps]);
   const [pastFpsWindow, setPastFpsWindow] = useState<
     { fps: Number; avg: number }[]

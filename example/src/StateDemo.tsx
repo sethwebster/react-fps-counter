@@ -9,7 +9,7 @@ export default function StateDemo({ itemCount }: StateDemoProps) {
   const elements = useMemo(
     () =>
       Array.from(Array(itemCount).keys()).map((key) => (
-        <DemoItem simpleKey={`simpleKey-${key}`} />
+        <DemoItem simpleKey={`simpleKey-${key}`} key={`simpleKey-${key}`} />
       )),
     [itemCount]
   );

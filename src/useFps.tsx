@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import useConditionalWarning from "./helpers/useConditionalWarning";
 
 interface UseFpsOptions {
   samplePeriod?: number;
   numberOfFramesForAverage?: number;
+  useAnimationFrames?: boolean;
 }
 
 const DEFAULT_OPTIONS = {
@@ -10,20 +12,32 @@ const DEFAULT_OPTIONS = {
   numberOfFramesForAverage: 5,
 };
 
-export function useFps(options: UseFpsOptions) {
+function getOptions(options: UseFpsOptions) {
   const samplePeriod = options.samplePeriod || DEFAULT_OPTIONS.samplePeriod;
   const numberOfFramesForAverage =
     options.numberOfFramesForAverage ||
     DEFAULT_OPTIONS.numberOfFramesForAverage;
+  const useAnimationFrames = options.useAnimationFrames || false;
+  return { samplePeriod, numberOfFramesForAverage, useAnimationFrames };
+}
+
+export function useFps(options: UseFpsOptions) {
+  const animationFrameRef = useRef<number>(-1);
+  const { samplePeriod, numberOfFramesForAverage, useAnimationFrames } =
+    getOptions(options);
 
   const [fpsDisplay, setFpsDisplay] = useState({ fps: 0, avg: 0 });
   const ratings = useRef<number[]>([]);
-
   const fps = useRef({
     frames: 0,
     startTime: Date.now(),
     lastTime: 0,
   });
+
+  useConditionalWarning(
+    !useAnimationFrames,
+    "react-fps-counter: it is recommended that you use animation frames for better accuracy. You are currently using the counter without this option set."
+  );
 
   const updateFps = useCallback(() => {
     // Increment the frame counter
@@ -50,18 +64,30 @@ export function useFps(options: UseFpsOptions) {
           ratings.current.reduce((a, b) => a + b, 0) / ratings.current.length,
       });
 
-      // Reset the frame counter every second
+      // Reset the frame counter every sample period
       fps.current.frames = 0;
       fps.current.startTime = Date.now();
       fps.current.lastTime = 0;
     }
-  }, [samplePeriod, numberOfFramesForAverage]);
+    if (useAnimationFrames) {
+      nextAnimationFrame();
+    }
+  }, [samplePeriod, numberOfFramesForAverage, options.samplePeriod, useAnimationFrames]);
+
+  const nextAnimationFrame = useCallback(() => {
+    animationFrameRef.current = window.requestAnimationFrame(updateFps);
+  }, [updateFps]);
 
   useEffect(() => {
-    const i = setInterval(() => {
-      updateFps();
-    }, 1);
-    return () => clearInterval(i);
+    if (useAnimationFrames) {
+      nextAnimationFrame();
+      return () => window.cancelAnimationFrame(animationFrameRef.current);
+    } else {
+      const interval = setInterval(() => {
+        updateFps();
+      }, 1);
+      return () => clearInterval(interval);
+    }
   });
   return fpsDisplay;
 }

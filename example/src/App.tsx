@@ -9,7 +9,8 @@ export default function App() {
   const [amount, setAmount] = useState(200);
   const [fpsVisible, setFpsVisible] = useState(true);
   const [samplePeriod, setSamplePeriod] = useState(1000);
-  const [targetFrameRate, setTargetFrameRate] = useState(255);
+  const [targetFrameRate, setTargetFrameRate] = useState(60);
+  const [useAnimationFrames, setUseAnimationFrames] = useState(false);
   return (
     <div className="App">
       <SimpleStateRoot
@@ -28,6 +29,8 @@ export default function App() {
           setAmount={setAmount}
           fpsVisible={fpsVisible}
           setFpsVisible={setFpsVisible}
+          useAnimationFrames={useAnimationFrames}
+          setUseAnimationFrames={setUseAnimationFrames}
         />
         <div
           style={{
@@ -70,6 +73,7 @@ export default function App() {
           visible={fpsVisible}
           samplePeriod={samplePeriod}
           targetFrameRate={targetFrameRate}
+          useAnimationFrames={useAnimationFrames}
         />
       </SimpleStateRoot>
     </div>

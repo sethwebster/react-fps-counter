@@ -40,7 +40,7 @@ function App() {
 </tr>
 <tr>
   <td>targetFrameRate</td>
-  <td>255</td>
+  <td>60</td>
   <td>Specifies the desired number of frames per second. Used to calculate the graph.</td>
 </tr>
 <tr>
