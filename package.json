@@ -4,9 +4,9 @@
   "description": "",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/types/index.d.ts",
-  "homepage": "https://github.com/sethwebster/fpscounter",
+  "homepage": "https://github.com/sethwebster/react-fps-counter",
   "repository": {
-    "url": "https://github.com/sethwebster/fpscounter"
+    "url": "https://github.com/sethwebster/react-fps-counter"
   },
   "scripts": {
     "clean": "rm -rf ./dist",
