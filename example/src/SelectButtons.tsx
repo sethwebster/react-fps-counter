@@ -33,9 +33,9 @@ export default function SelectButtons({
         Set Comfortable FPS
       </button>
       <button
-        onClick={() => setAmount(805)}
+        onClick={() => setAmount(1550)}
         style={{
-          background: amount === 805 ? "lightblue" : "#ccc",
+          background: amount === 1550 ? "lightblue" : "#ccc",
           border: "1px solid #aaa",
           borderRadius: "2px",
           padding: "5px"
