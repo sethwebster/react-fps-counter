@@ -85,6 +85,12 @@ function App() {
   
   </td>
 </tr>
+<tr>
+  <td>useAnimationFrames</td>
+  <td>true</td>
+  <td>Specifies whether to use <code>window.requestAnimationFrame</code> or not. It is highly recommended, for accuracy's sake, to leave this <code>true</code>.</td>
+</tr>
+
 </table>
 
 ## Advanced Usage
