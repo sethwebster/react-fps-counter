@@ -1,7 +1,7 @@
 # React Fps Counter
 This package provides a component to overlay of the number of FPS (frames per second) of your React page.
 
-![What the FPS Display Looks Like](https://github.com/sethwebster/fpscounter/blob/913a998ff22894dbf2fa3d48d1598e27e010816f/images/screenshot.png?raw=true)
+![What the FPS Display Looks Like](https://raw.githubusercontent.com/sethwebster/react-fps-counter/main/images/screenshot.png)
 
 You can see the current FPS, and the average FPS over a number of frames.
 
@@ -143,6 +143,6 @@ function Component() {
 }
 ```
 
-![Demo of useFpsData](https://github.com/sethwebster/fpscounter/raw/09d5437e1a45b719db96fa620cf131acf047e3fb/images/useFpsScreenshot.png)
+![Demo of useFpsData](https://raw.githubusercontent.com/sethwebster/react-fps-counter/main/images/useFpsScreenshot.png)
 ### License
 [MIT](./LICENSE.txt)
