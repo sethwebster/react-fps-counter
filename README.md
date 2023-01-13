@@ -59,7 +59,7 @@ function App() {
 <tr>
   <td>samplePeriod</td>
   <td>1000</td>
-  <td>Specifies how long each sample period should be in illiseconds. Smaller numbers sample more often.</td>
+  <td>Specifies how long each sample period should be in milliseconds. Smaller numbers sample more often. Every frame is captured, but when calculating the average, the <code>samplePeriod</code> is used.</td>
 </tr>
 <tr>
   <td>numberOfFramesForAverage</td>
